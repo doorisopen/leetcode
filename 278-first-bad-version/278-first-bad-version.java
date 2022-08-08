@@ -3,7 +3,8 @@
 
 public class Solution extends VersionControl {
     public int firstBadVersion(int n) {
-        return searchFirstBadVersion(0, n - 1);
+        return searchFirstBadVersion2(n);
+        // return searchFirstBadVersion(0, n - 1);
     }
     
     private int searchFirstBadVersion(int target, int n) {
@@ -17,5 +18,19 @@ public class Solution extends VersionControl {
         }
         //mid < firstBadVersion
         return searchFirstBadVersion(mid + 1, n);
+    }
+    
+    private int searchFirstBadVersion2(int n) {
+        int start = 1;
+        int end = n;
+        while (start < end) {
+            int mid = start + (end - start) / 2;
+            if (!isBadVersion(mid)) {
+                start = mid + 1;
+            } else {
+                end = mid;
+            }
+        }
+        return start;
     }
 }
