@@ -26,7 +26,7 @@ class Solution {
         if (p != null && q != null) {
             if (p.val != q.val) {
                 return false;
-            }   
+            } 
         }
         //left
         if (p.left != null ^ q.left != null) {
